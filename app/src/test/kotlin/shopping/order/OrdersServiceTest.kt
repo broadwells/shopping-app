@@ -1,6 +1,7 @@
 package shopping.order
 
 import org.junit.Test
+import shopping.order.OrdersService
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 

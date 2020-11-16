@@ -1,9 +1,10 @@
 package shopping.order
 
+import shopping.AppEvent
+import shopping.notification.MailService
 import kotlin.math.floor
-import kotlin.random.Random
 
-class OrdersService(shoppingList: Array<String>) : Runnable {
+class OrdersService(shoppingList: Array<String>) {
     private var productMap: Map<String, Map<String, Any>> = emptyMap()
     private var shoppingList: Array<String> = emptyArray()
 
@@ -11,19 +12,15 @@ class OrdersService(shoppingList: Array<String>) : Runnable {
         this.productMap = mapOf("apple" to mapOf("price" to 0.60, "offer" to 2), "orange"
                 to mapOf("price" to 0.25, "offer" to 3))
         this.shoppingList = shoppingList
-    }
-
-    override fun run() {
-        println("Order number: ${Random.nextInt(0, 100)} is being processed.")
-        findCost(shoppingList)
+        processOrder()
     }
 
     /**
      * calculate cost of the order
      */
-    fun findCost(shoppingList: Array<String>): Double {
+    fun processOrder(): Double {
         var cost = 0.00
-        val itemCount: Map<String, Int> = findItemCount(shoppingList)
+        val itemCount: Map<String, Int> = findItemCount()
         for (product in itemCount) {
             try {
                 cost += specialOfferPrice(product.value,
@@ -42,7 +39,7 @@ class OrdersService(shoppingList: Array<String>) : Runnable {
      * Find the count of each item in the String array. This will aid in determining how many items are eligible for
      * the special offer pricings.
      */
-     fun findItemCount(shoppingList: Array<String>): Map<String, Int> {
+     fun findItemCount(): Map<String, Int> {
         val itemCount = mutableMapOf(shoppingList[0].toLowerCase() to 0)
         for (productItem in shoppingList) {
             val product: String = productItem.toLowerCase()
@@ -66,4 +63,9 @@ class OrdersService(shoppingList: Array<String>) : Runnable {
         val itemCountAfterOffer: Int = floor(itemCount.div(offer).toDouble()).toInt()
         return price.times((itemCount.minus(itemCountAfterOffer)))
     }
+}
+
+fun main(shoppingList: Array<String>) {
+    AppEvent.publish(OrdersService(shoppingList))
+    MailService().listener()
 }
