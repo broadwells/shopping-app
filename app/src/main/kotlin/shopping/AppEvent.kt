@@ -2,7 +2,6 @@ package shopping
 
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
-import rx.subjects.PublishSubject
 
 object AppEvent {
     private val publisher = PublishSubject.create<Any>()
