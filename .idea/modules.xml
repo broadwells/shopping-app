@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/shopping-app.iml" filepath="$PROJECT_DIR$/shopping-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/shopping-app.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/shopping-app.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/shopping-app.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/shopping-app.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/shopping-app.app.test.iml" filepath="$PROJECT_DIR$/.idea/modules/app/shopping-app.app.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/shopping-app.lib.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/shopping-app.lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shopping-app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/shopping-app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shopping-app.test.iml" filepath="$PROJECT_DIR$/.idea/modules/shopping-app.test.iml" />
+    </modules>
+  </component>
+</project>
