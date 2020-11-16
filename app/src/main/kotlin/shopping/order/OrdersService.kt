@@ -1,4 +1,4 @@
-package shopping.app
+package shopping.order
 
 import kotlin.math.floor
 import kotlin.random.Random
@@ -15,9 +15,12 @@ class OrdersService(shoppingList: Array<String>) : Runnable {
 
     override fun run() {
         println("Order number: ${Random.nextInt(0, 100)} is being processed.")
-        println(findCost(shoppingList))
+        findCost(shoppingList)
     }
 
+    /**
+     * calculate cost of the order
+     */
     fun findCost(shoppingList: Array<String>): Double {
         var cost = 0.00
         val itemCount: Map<String, Int> = findItemCount(shoppingList)
@@ -35,6 +38,10 @@ class OrdersService(shoppingList: Array<String>) : Runnable {
         return cost
     }
 
+    /**
+     * Find the count of each item in the String array. This will aid in determining how many items are eligible for
+     * the special offer pricings.
+     */
      fun findItemCount(shoppingList: Array<String>): Map<String, Int> {
         val itemCount = mutableMapOf(shoppingList[0].toLowerCase() to 0)
         for (productItem in shoppingList) {
@@ -52,13 +59,11 @@ class OrdersService(shoppingList: Array<String>) : Runnable {
         return itemCount
     }
 
+    /**
+     * calculate the price of an item, taking into account any special offers
+     */
      fun specialOfferPrice(itemCount: Int, offer: Int, price: Double): Double {
         val itemCountAfterOffer: Int = floor(itemCount.div(offer).toDouble()).toInt()
         return price.times((itemCount.minus(itemCountAfterOffer)))
     }
-}
-
-fun main(shoppingList: Array<String>) {
-    val thread = Thread(OrdersService(shoppingList))
-    thread.start()
 }

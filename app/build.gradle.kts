@@ -44,5 +44,5 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass.set("shopping.app.OrdersServiceKt")
+    mainClass.set("shopping.order.notification.MailServiceKt")
 }

@@ -7,8 +7,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/shopping-app.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/shopping-app.app.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/shopping-app.app.test.iml" filepath="$PROJECT_DIR$/.idea/modules/app/shopping-app.app.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/shopping-app.lib.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/shopping-app.lib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shopping-app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/shopping-app.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shopping-app.test.iml" filepath="$PROJECT_DIR$/.idea/modules/shopping-app.test.iml" />
     </modules>
   </component>
 </project>

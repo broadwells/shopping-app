@@ -1,4 +1,4 @@
-package shopping.app
+package shopping.order
 
 import org.junit.Test
 import kotlin.test.assertEquals
