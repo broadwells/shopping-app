@@ -7,3 +7,4 @@ out
 
 # Ignore IntelliJ idea directory
 .idea
+lib
