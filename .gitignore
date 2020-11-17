@@ -6,5 +6,5 @@ build
 out
 
 # Ignore IntelliJ idea directory
-.idea
 lib
+.idea

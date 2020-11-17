@@ -1,29 +1,28 @@
 package shopping.order
 
 import org.junit.Test
-import shopping.order.OrdersService
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 class OrdersServiceTest {
 
-    @Test fun findCostOf3Apples1Orange() {
+    @Test fun processOrderOf3Apples1Orange() {
         val shoppingList = arrayOf("Apple", "Apple", "Orange", "Apple")
         // expected response matches cost of BOGO + 1 apples and 1 orange
-        assertEquals(1.45, OrdersService(shoppingList).findCost(shoppingList))
+        assertEquals(1.45, OrdersService(shoppingList).findCost())
     }
 
-    @Test fun findCostOf2Apples2Orange() {
+    @Test fun processOrderOf2Apples2Orange() {
         val shoppingList = arrayOf("Apple", "apple", "Orange", "Apple", "Orange", "Orange")
         // expected response matches cost of BOGO + 1 apples and B2GO oranges
-        assertEquals(1.70, OrdersService(shoppingList).findCost(shoppingList))
+        assertEquals(1.70, OrdersService(shoppingList).findCost())
     }
 
-    @Test fun findCostOf2ValidFruitOptionsAndEmptyString() {
+    @Test fun processOrderOf2ValidFruitOptionsAndEmptyString() {
         // parameter arguments include fruit that is not listed in the product options
         val shoppingList = arrayOf("Apple", "Apple", "Orange", "")
         // expect response to match cost of BOGO apples and 1 orange
-        assertEquals(0.85, OrdersService(shoppingList).findCost(shoppingList))
+        assertEquals(0.85, OrdersService(shoppingList).findCost())
     }
 
     @Test fun findItemCountOf3ApplesAnd3Oranges() {
@@ -31,7 +30,7 @@ class OrdersServiceTest {
         val shoppingList = arrayOf("Apple", "Orange", "Apple", "Orange", "Apple", "Orange")
 
         // when: OrdersService findItem count is called
-        val itemsCounted: Map<String, Int>  = OrdersService(shoppingList).findItemCount(shoppingList)
+        val itemsCounted: Map<String, Int>  = OrdersService(shoppingList).findItemCount()
 
         // then: expect key/value of Apple: 3 and Orange: 3
         assertEquals(3, itemsCounted["Apple".toLowerCase()])
@@ -43,7 +42,7 @@ class OrdersServiceTest {
         val shoppingList = arrayOf("Apple", "Orange", "Apple", "Orange", "Apple", "")
 
         // when: OrdersService findItem count is called
-        val itemsCounted: Map<String, Int>  = OrdersService(shoppingList).findItemCount(shoppingList)
+        val itemsCounted: Map<String, Int>  = OrdersService(shoppingList).findItemCount()
 
         // then: expect key/value of Apple: 3 and Orange: 3
         assertTrue(itemsCounted.size == 2)

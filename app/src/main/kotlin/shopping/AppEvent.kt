@@ -1,18 +1,10 @@
 package shopping
 
-import io.reactivex.Observable
-import io.reactivex.subjects.PublishSubject
+import shopping.notification.OrderNotificationListener
+import shopping.order.OrdersService
 
-object AppEvent {
-    private val publisher = PublishSubject.create<Any>()
-
-    fun publish(event: Any) {
-        publisher.onNext(event)
-    }
-
-    // Listen should return an Observable and not the publisher
-    // Using ofType we filter only events that match that class type
-    fun <T> listen(eventType: Class<T>): Observable<T>? {
-        return publisher.ofType(eventType)
-    }
+fun main(shoppingList: Array<String>) {
+    val ordersService = OrdersService(shoppingList)
+    ordersService.event.subscribe(OrderNotificationListener())
+    ordersService.processOrder()
 }

@@ -1,24 +1,27 @@
 package shopping.order
 
-import shopping.AppEvent
-import shopping.notification.MailService
+import shopping.event.EventManager
 import kotlin.math.floor
 
 class OrdersService(shoppingList: Array<String>) {
     private var productMap: Map<String, Map<String, Any>> = emptyMap()
     private var shoppingList: Array<String> = emptyArray()
+    var event = EventManager()
 
     init {
         this.productMap = mapOf("apple" to mapOf("price" to 0.60, "offer" to 2), "orange"
                 to mapOf("price" to 0.25, "offer" to 3))
         this.shoppingList = shoppingList
-        processOrder()
+    }
+
+    fun processOrder() {
+        event.notify("Success", findCost())
     }
 
     /**
      * calculate cost of the order
      */
-    fun processOrder(): Double {
+    fun findCost(): Double {
         var cost = 0.00
         val itemCount: Map<String, Int> = findItemCount()
         for (product in itemCount) {
@@ -63,9 +66,4 @@ class OrdersService(shoppingList: Array<String>) {
         val itemCountAfterOffer: Int = floor(itemCount.div(offer).toDouble()).toInt()
         return price.times((itemCount.minus(itemCountAfterOffer)))
     }
-}
-
-fun main(shoppingList: Array<String>) {
-    AppEvent.publish(OrdersService(shoppingList))
-    MailService().listener()
 }
